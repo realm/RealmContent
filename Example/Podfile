@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'RealmContent_Example' do
+  pod 'RealmSwift'
+
+  pod 'RealmContent', :path => '../'
+  #pod 'RealmContent/Markdown', :path => '../'
+
+  target 'RealmContent_Tests' do
+    inherit! :search_paths
+  end
+end
