@@ -18,7 +18,14 @@ This library is powered by __RealmSwift__ ( [Realm Docs](https://realm.io/docs/s
 
 The demo app in this repo includes a full working example of an app using RealmContent. Here's the crash-course:
 
-**0)** Your app would normally have a list of objects it syncs from the Realm Object Server:
+**1)** Import `RealmSwift` and `RealmContent`
+
+```swift
+import RealmSwift
+import RealmContent
+```
+
+Your app would normally have a list of objects it syncs from the Realm Object Server:
 
 ![](assets/models-before.png)
 
@@ -27,13 +34,6 @@ Once you import `RealmContent` it will expose two new models which Realm will ad
 ![](assets/models-after.png)
 
 If you're using multiple Realm files, add `ContentPage` and `ContentElement` to the desired object schema.
-
-**1)** Import `RealmSwift` and `RealmContent`
-
-```swift
-import RealmSwift
-import RealmContent
-```
 
 **2)** Create a content data source 
 
