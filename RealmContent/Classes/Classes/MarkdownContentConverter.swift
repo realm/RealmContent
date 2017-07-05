@@ -46,7 +46,12 @@ struct MarkdownContentConverter {
         for element in page.elements {
             if let kind = ContentElement.Kind(rawValue: element.type) {
                 switch kind {
-                case .p : result += "\(newLine) \(element.content)"
+                case .p :
+                    if let url = element.url {
+                        result += "\(newLine) [\(element.content)](\(url))"
+                    } else {
+                        result += "\(newLine) \(element.content)"
+                    }
                 case .h1: result += "\(newLine) # \(element.content)"
                 case .h2: result += "\(newLine) ## \(element.content)"
                 case .h3: result += "\(newLine) ### \(element.content)"
@@ -58,9 +63,6 @@ struct MarkdownContentConverter {
                     } else {
                         result += "\(newLine) ![\(element.content)](\(url))"
                     }
-                case .link:
-                    guard let url = element.url else { break }
-                    result += "\(newLine) [\(element.content)](\(url))"
                 }
                 if options.contains(.addNewlines) {
                     result += newLine

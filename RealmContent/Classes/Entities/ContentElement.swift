@@ -12,7 +12,7 @@ public class ContentElement: Object {
 
     /// the supported element types
     public enum Kind: String {
-        case p, img, h1, h2, h3, h4, link
+        case p, img, h1, h2, h3, h4
     }
 
     public dynamic var type = "p"

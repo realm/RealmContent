@@ -42,7 +42,7 @@ func createDemoData() {
             ContentElement(value: ["type": "h3", "content": "Heading with h3"]),
             ContentElement(value: ["type": "h4", "content": "Heading with h4"]),
             ContentElement(value: ["type": "p", "content": "In publishing and graphic design, lorem ipsum is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself has been produced. (source: Wikipedia)"]),
-            ContentElement(value: ["type": "link", "content": "Link to Wikipedia", "url": "https://en.wikipedia.org/wiki/Lorem_ipsum"]),
+            ContentElement(value: ["type": "p", "content": "Link to Wikipedia", "url": "https://en.wikipedia.org/wiki/Lorem_ipsum"]),
             ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"]),
             ContentElement(value: ["type": "p", "content": "Tap on the image above to open Realm's blog 🦄 ..."])
             ]

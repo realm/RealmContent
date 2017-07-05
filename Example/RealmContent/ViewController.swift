@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if try! Realm().isEmpty {
+        if try! Realm().objects(ContentPage.self).count < 1 {
             createDemoData()
         }
     }

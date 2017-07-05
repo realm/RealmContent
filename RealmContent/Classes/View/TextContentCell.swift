@@ -112,6 +112,9 @@ public class TextContentCell: UITableViewCell {
         switch kind {
         case .p:
             label.font = UIFont.preferredFont(forTextStyle: .body)
+            if url != nil {
+                label.textColor = config.color()
+            }
         case .h1:
             label.font = UIFont.preferredFont(forTextStyle: .title1)
             label.textColor = config.color()
@@ -122,9 +125,6 @@ public class TextContentCell: UITableViewCell {
             label.font = UIFont.preferredFont(forTextStyle: .headline)
         case .h4:
             label.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        case .link:
-            label.font = UIFont.preferredFont(forTextStyle: .callout)
-            label.textColor = config.color()
         default: break
         }
 

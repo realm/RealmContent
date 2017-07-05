@@ -7,7 +7,13 @@
 import Foundation
 import RealmSwift
 
-class User: Object {
+class Dog: Object {
     dynamic var name = ""
-    dynamic var birthday = Date()
+    dynamic var age = 0
+}
+
+class Person: Object {
+    dynamic var name = ""
+    dynamic var picture: NSData? = nil
+    let dogs = List<Dog>()
 }

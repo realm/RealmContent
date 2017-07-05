@@ -186,7 +186,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
         }
 
         switch kind {
-        case .h1, .h2, .h3, .h4, .p, .link:
+        case .h1, .h2, .h3, .h4, .p:
             let cellId = String(describing: TextContentCell.self)
             let cell: TextContentCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! TextContentCell
             cell.populate(with: element, config: TextContentCell.TextConfig(mainColor: page.mainColor))

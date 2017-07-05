@@ -54,8 +54,16 @@ extension AppDelegate {
             }
 
             var conf = Realm.Configuration.defaultConfiguration
-            conf.syncConfiguration = SyncConfiguration(user: user, realmURL: URL(string: "realm://\(host):9080/~/realmcontenttest")!)
+            conf.syncConfiguration = SyncConfiguration(user: user, realmURL: URL(string: "realm://\(host):9080/~/realmcontenttest1")!)
             Realm.Configuration.defaultConfiguration = conf
+
+            //some demo data
+            let realm = try! Realm()
+            if realm.isEmpty {
+                try! realm.write {
+                    realm.add(Person(value: ["name": "Meghan", "dogs": [Dog(value: ["name": "Rex", "age": 1])]]))
+                }
+            }
 
             DispatchQueue.main.async { completion(true) }
         }
