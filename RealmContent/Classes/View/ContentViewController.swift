@@ -19,6 +19,8 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
 
     /// whether to use Safari controller to open URLs
     public var usesSafariController = true
+    public var openCustomURL: ((URL)->Void)?
+    public var customizeCell: ((UITableViewCell, IndexPath, ContentElement)->Void)?
 
     // MARK: - private properties
     private let tableView = UITableView()
@@ -209,6 +211,11 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
 /// content cell delegate methods
 extension ContentViewController: ContentCellDelegate {
     public func openUrl(url: URL) {
+        if let scheme = url.scheme, scheme == "app" {
+            openCustomURL?(url)
+            return
+        }
+
         guard usesSafariController, let scheme = url.scheme, scheme.hasPrefix("http") else {
             UIApplication.shared.openURL(url)
             return
