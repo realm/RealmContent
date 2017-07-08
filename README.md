@@ -16,7 +16,8 @@ This library is powered by __RealmSwift__ ( [Realm Docs](https://realm.io/docs/s
 
 ## Quick Showcase (~3 min)
 
-<script src="https://fast.wistia.com/embed/medias/8dma69l12r.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_8dma69l12r popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:253px;width:450px">&nbsp;</span>
+<iframe src="https://fast.wistia.net/embed/iframe/8dma69l12r?seo=false" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="358"></iframe>
+<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Code Example
 
