@@ -16,8 +16,9 @@ This library is powered by __RealmSwift__ ( [Realm Docs](https://realm.io/docs/s
 
 ## Quick Showcase (~3 min)
 
-<iframe src="https://fast.wistia.net/embed/iframe/8dma69l12r?seo=false" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="640" height="358"></iframe>
-<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+[![Video Thumbnail](assets/video-thumb.jpg)](https://news.realm.io/news/marin-todorov-realmcontent-open-source-realm-powered-cms-component)
+
+_Links to video and blog article about RealmContent._
 
 ## Code Example
 
