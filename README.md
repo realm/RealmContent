@@ -14,6 +14,10 @@ This library is powered by __RealmSwift__ ( [Realm Docs](https://realm.io/docs/s
 3. Installation
 4. Credits
 
+## Quick Showcase (~3 min)
+
+<script src="https://fast.wistia.com/embed/medias/8dma69l12r.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_8dma69l12r popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:253px;width:450px">&nbsp;</span>
+
 ## Code Example
 
 The demo app in this repo includes a full working example of an app using RealmContent. Here's the crash-course:
