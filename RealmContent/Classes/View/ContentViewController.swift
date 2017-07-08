@@ -193,6 +193,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
             let cell: TextContentCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! TextContentCell
             cell.populate(with: element, config: TextContentCell.TextConfig(mainColor: page.mainColor))
             cell.delegate = self
+            customizeCell?(cell, indexPath, element)
             return cell
 
         case .img:
@@ -203,6 +204,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
                 self?.tableView.endUpdates()
             }
             cell.delegate = self
+            customizeCell?(cell, indexPath, element)
             return cell
         }
     }
