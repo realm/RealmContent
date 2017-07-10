@@ -8,7 +8,7 @@ Realm powered content management system providing built-in view controllers and 
                        DESC
 
   s.homepage         = 'https://github.com/realm-demos/RealmContent'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  # s.screenshots      = ''
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.source           = { :git => 'https://github.com/realm-demos/RealmContent.git', :tag => s.version.to_s }
   s.author                  = { 'Realm' => 'help@realm.io' }

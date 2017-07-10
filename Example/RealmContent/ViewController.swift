@@ -16,22 +16,26 @@ class ViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     // 2) create a content data source
-    let items = ContentListDataSource(style: .sectionsByTag)
+    var items: ContentListDataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 3) initialize the data source and set view to update
-        items.loadContent(from: try! Realm())
-        items.updating(view: tableView)
-    }
+        // load the data into realm to display this demo
+        let realm = try! Realm()
+        DemoData.createDemoDataSet1(in: realm)
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if try! Realm().objects(ContentPage.self).count < 1 {
-            createDemoData()
+        if tableView.style == .plain {
+            // one section, lists all pages by priority
+            items = ContentListDataSource(style: .plain)
+        } else {
+            // mulitple section, lists pages by priority within section
+            items = ContentListDataSource(style: .sectionsByTag)
         }
+
+        // 3) initialize the data source and set view to update
+        items.loadContent(from: realm)
+        items.updating(view: tableView)
     }
 }
 
