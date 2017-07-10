@@ -14,7 +14,7 @@ import Kingfisher
 /**
  `ContentViewController` is a view controller, which displays a given `ContentPage`'s content
  */
-public class ContentViewController: UIViewController, UITableViewDataSource {
+public class ContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - public properties
 
     /// whether to use Safari controller to open URLs
@@ -24,7 +24,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
 
     // MARK: - private properties
     private let tableView = UITableView()
-    private var page: ContentPage!
+    public var page: ContentPage!
     private var lastHashes = [Int]()
 
     /// realm notifications
@@ -40,19 +40,19 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     // MARK: - view controller life-cycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        title = page.title
         configureTableView()
     }
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = page.title
         observe(page: page)
 
         NotificationCenter.default.addObserver(forName: .UIContentSizeCategoryDidChange, object: .none, queue: OperationQueue.main) { [weak self] _ in
@@ -71,6 +71,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
     // MARK: - private methods
 
     private func configureTableView() {
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -193,7 +194,6 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
             let cell: TextContentCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! TextContentCell
             cell.populate(with: element, config: TextContentCell.TextConfig(mainColor: page.mainColor))
             cell.delegate = self
-            customizeCell?(cell, indexPath, element)
             return cell
 
         case .img:
@@ -204,9 +204,12 @@ public class ContentViewController: UIViewController, UITableViewDataSource {
                 self?.tableView.endUpdates()
             }
             cell.delegate = self
-            customizeCell?(cell, indexPath, element)
             return cell
         }
+    }
+
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        customizeCell?(cell, indexPath, page.elements[indexPath.row])
     }
 }
 

@@ -16,6 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9CB782231F1394A000FE1828 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782221F1394A000FE1828 /* PageCollectionViewCell.swift */; };
 		9CB782251F13966900FE1828 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782241F13966900FE1828 /* CustomCollectionViewController.swift */; };
+		9CB782271F13C03C00FE1828 /* DemosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782261F13C03C00FE1828 /* DemosTableViewController.swift */; };
 		9CB7EF7B1F0C0F2900E70F21 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7EF7A1F0C0F2900E70F21 /* Entities.swift */; };
 		9CB7EF7E1F0C14A100E70F21 /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7EF7D1F0C14A100E70F21 /* DemoData.swift */; };
 		A05247F6E9ADF72B0FB18887 /* Pods_RealmContent_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A925AA1E0E169870735E89 /* Pods_RealmContent_Example.framework */; };
@@ -52,6 +53,7 @@
 		9B388CBFD66930A128F34526 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9CB782221F1394A000FE1828 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CB782241F13966900FE1828 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
+		9CB782261F13C03C00FE1828 /* DemosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemosTableViewController.swift; sourceTree = "<group>"; };
 		9CB7EF7A1F0C0F2900E70F21 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		9CB7EF7C1F0C12B100E70F21 /* RealmContent_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealmContent_Example.entitlements; sourceTree = "<group>"; };
 		9CB7EF7D1F0C14A100E70F21 /* DemoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
@@ -112,10 +114,11 @@
 		607FACD21AFB9204008FA782 /* Example for RealmContent */ = {
 			isa = PBXGroup;
 			children = (
-				9CB782211F13948500FE1828 /* List Styles */,
+				9CB782211F13948500FE1828 /* List Style Demos */,
 				9CB7EF7F1F0C1D5400E70F21 /* Assets */,
 				9CB7EF791F0C0F1700E70F21 /* Entities */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				9CB782261F13C03C00FE1828 /* DemosTableViewController.swift */,
 				9CB7EF7D1F0C14A100E70F21 /* DemoData.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -169,14 +172,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9CB782211F13948500FE1828 /* List Styles */ = {
+		9CB782211F13948500FE1828 /* List Style Demos */ = {
 			isa = PBXGroup;
 			children = (
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				9CB782221F1394A000FE1828 /* PageCollectionViewCell.swift */,
 				9CB782241F13966900FE1828 /* CustomCollectionViewController.swift */,
 			);
-			name = "List Styles";
+			name = "List Style Demos";
 			sourceTree = "<group>";
 		};
 		9CB7EF791F0C0F1700E70F21 /* Entities */ = {
@@ -409,6 +412,7 @@
 				9CB7EF7E1F0C14A100E70F21 /* DemoData.swift in Sources */,
 				9CB782231F1394A000FE1828 /* PageCollectionViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				9CB782271F13C03C00FE1828 /* DemosTableViewController.swift in Sources */,
 				9CB7EF7B1F0C0F2900E70F21 /* Entities.swift in Sources */,
 				9CB782251F13966900FE1828 /* CustomCollectionViewController.swift in Sources */,
 			);

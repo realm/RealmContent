@@ -36,7 +36,8 @@ struct DemoData {
                 "title": "Formatting Showcase",
                 "priority": 8,
                 "mainColor": "purple",
-                "tag": "Info"
+                "tag": "Info",
+                "id": "showcase"
                 ])
             let elements: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Heading with h1"]),
