@@ -13,14 +13,34 @@ import RealmContent
 
 struct DemoData {
 
-    static func createDemoDataSet1(in realm: Realm) {
+    static func createDemoDataSet2(in realm: Realm) {
         try! realm.write {
             realm.deleteAll()
 
-            let pages = realm.objects(ContentPage.self)
-                .filter("title IN %@", ["About", "Formatting Showcase", "Store"])
-            pages.map { $0.elements } .forEach(realm.delete)
-            realm.delete(pages)
+            let contact = ContentPage(value: [
+                "title": "Interactions Showcase",
+                "mainColor": "Blue",
+                "id": "interactions"
+                ])
+            let elements: [ContentElement] = [
+                ContentElement(value: ["type": "p", "content": "This is a text"]),
+                ContentElement(value: ["type": "p", "content": "This is a text with a URL", "url": "https://www.wikipedia.com"]),
+                ContentElement(value: ["type": "p", "content": "Below is a heading with a URL"]),
+                ContentElement(value: ["type": "h2", "content": "Tap me!", "url": "https://www.kiva.org"]),
+                ContentElement(value: ["type": "p", "content": "Below is an image with url"]),
+                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"]),
+                ContentElement(value: ["type": "p", "content": "Below is a custom schema URL of this type: app://product/id/134. This schema allows you to implement custom app logic when the user taps on a link."]),
+                ContentElement(value: ["type": "h2", "content": "Add to cart", "url": "app://product/id/134"])
+            ]
+            contact.elements.append(objectsIn: elements)
+
+            realm.add(contact)
+        }
+    }
+
+    static func createDemoDataSet1(in realm: Realm) {
+        try! realm.write {
+            realm.deleteAll()
 
             let about = ContentPage(value: [
                 "title": "About",

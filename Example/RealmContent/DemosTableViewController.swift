@@ -13,30 +13,36 @@ import RealmContent
 let defaultTextColor = TextContentCell.defaultTextColor
 
 class DemosTableViewController: UITableViewController {
+
+    func getPage(realm: Realm, prep: (Realm)->Void, id: String) -> ContentPage {
+        prep(realm)
+        return realm.objects(ContentPage.self)
+            .filter("id = %@", id)
+            .first!
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier, let vc = segue.destination as? ContentViewController else { return }
 
+        TextContentCell.defaultTextColor = defaultTextColor
+
         // fetch page
         let realm = try! Realm()
-        DemoData.createDemoDataSet1(in: realm)
-
-        let page = realm.objects(ContentPage.self)
-            .filter("id = %@", "showcase")
-            .first!
 
         // inject it in view controller
         switch identifier {
         case "DefaultPage":
             // vanilla formatting
+            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
             try! realm.write {
                 page.mainColor = nil
             }
-            TextContentCell.defaultTextColor = defaultTextColor
 
             vc.page = page
 
         case "CustomColor":
             // custom color
+            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
             try! realm.write {
                 page.mainColor = "#cc3355"
             }
@@ -46,9 +52,15 @@ class DemosTableViewController: UITableViewController {
 
         case "CustomElements":
             // customized elements
+            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
             vc.page = page
             vc.customizeCell = customizeElementBlock
 
+        case "Interactions":
+            // shows different interactions
+            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet2, id: "interactions")
+            vc.page = page
+            vc.openCustomURL = handleCustomUrl
         default: break
         }
     }
@@ -61,9 +73,8 @@ class DemosTableViewController: UITableViewController {
             dashColor = .red
         }
 
-        if indexPath.row % 2 == 0 {
-            cell.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        }
+        cell.contentView.backgroundColor = UIColor(white: (indexPath.row % 2 == 0) ? 0.95 : 1.0, alpha: 1.0)
+
         let separator = cell.viewWithTag(1000) ?? {
             let v = UIView()
             v.tag = 1000
@@ -80,5 +91,14 @@ class DemosTableViewController: UITableViewController {
         dash.frame = separator.bounds
         dash.path = UIBezierPath(roundedRect: cell.bounds.insetBy(dx: 6, dy: 6), cornerRadius: 10).cgPath
         dash.strokeColor = dashColor.cgColor
+    }
+
+    func handleCustomUrl(url: URL) {
+
+        let alert = UIAlertController(title: "Added to cart", message: "The product id \(url.lastPathComponent) has been successfully added to your cart", preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {[weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        })
     }
 }

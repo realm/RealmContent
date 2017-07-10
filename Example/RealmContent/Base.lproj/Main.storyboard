@@ -174,6 +174,31 @@
                                             <segue destination="iea-pO-ykG" kind="show" identifier="CustomElements" id="Rld-HS-IXF"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="grW-SU-Dsx">
+                                        <rect key="frame" x="0.0" y="375.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grW-SU-Dsx" id="g1Q-8N-hxE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-Dp-rto">
+                                                    <rect key="frame" x="16" y="11" width="344" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Ac-Dp-rto" firstAttribute="leading" secondItem="g1Q-8N-hxE" secondAttribute="leadingMargin" constant="8" id="H1f-DD-Khw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7Ac-Dp-rto" secondAttribute="trailing" constant="7" id="N18-UE-zNg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7Ac-Dp-rto" secondAttribute="bottom" constant="3.5" id="NVX-Md-YWp"/>
+                                                <constraint firstItem="7Ac-Dp-rto" firstAttribute="top" secondItem="g1Q-8N-hxE" secondAttribute="topMargin" constant="3" id="sOJ-u1-yAs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iea-pO-ykG" kind="show" identifier="Interactions" id="mDQ-Ng-DMv"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -460,6 +485,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rld-HS-IXF"/>
+        <segue reference="mDQ-Ng-DMv"/>
     </inferredMetricsTieBreakers>
 </document>
