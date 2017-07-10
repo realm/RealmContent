@@ -1,9 +1,7 @@
 //
-//  PageCollectionViewCell.swift
-//  RealmContent
-//
-//  Created by Marin Todorov on 7/10/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  ViewController.swift
+//  Created by Marin Todorov
+//  Copyright © 2017 - present Realm. All rights reserved.
 //
 
 import UIKit
