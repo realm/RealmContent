@@ -46,16 +46,24 @@ public class ContentListDataSource: NSObject {
 
     // MARK: - class initialization
 
-    /// creates an instance with the given grouping style
+    /**
+     * creates an instance with the given grouping style
+     * - parameter style: either .plain or .sectionsByTag
+     */
     public init(style: Style = .plain) {
         self.style = style
         super.init()
     }
 
-    /// "loads" the list of content from the given realm
-    public func loadContent(from realm: Realm) {
+    /**
+     * "loads" the list of content from the given realm
+     * - parameter from: a Realm to look for content into
+     * - parameter filter: predicate format to filter the found content (if needed)
+     * - parameter filterArgs: any arguments for the predicate format
+     */
+    public func loadContent(from realm: Realm, filter: NSPredicate? = nil) {
         realmConfiguration = realm.configuration
-        loadContent()
+        loadContent(filterPredicate: filter)
     }
 
     /**
@@ -77,14 +85,22 @@ public class ContentListDataSource: NSObject {
 
     fileprivate var sections: [SectionInfo]?
 
-    private func loadContent() {
+    private func loadContent(filterPredicate: NSPredicate? = nil) {
         let realm = try! Realm(configuration: realmConfiguration)
 
         switch style {
         case .plain:
+            // fetch pages with content
             results = realm.objects(ContentPage.self)
                 .filter("\(keyElements).@count > 0")
-                .sorted(byKeyPath: keyPriority, ascending: false)
+
+            // apply any custom filtering
+            if let predicate = filterPredicate {
+                results = results!.filter(predicate)
+            }
+
+            // sort the pages by priority
+            results = results!.sorted(byKeyPath: keyPriority, ascending: false)
 
             resultsToken = results?.addNotificationBlock { [weak self] change in
                 guard let view = self?.view else { return }
@@ -93,12 +109,21 @@ public class ContentListDataSource: NSObject {
             }
 
         case .sectionsByTag:
+            // get content pages
             results = realm.objects(ContentPage.self)
                 .filter("\(keyElements).@count > 0")
-                .sorted(by: [
+
+            // apply any custom filtering
+            if let predicate = filterPredicate {
+                results = results!.filter(predicate)
+            }
+
+            // sort the pages by tag and priority
+            results = results!.sorted(by: [
                     SortDescriptor(keyPath: keyTag, ascending: true),
                     SortDescriptor(keyPath: keyPriority, ascending: false)
                     ])
+
             resultsToken = results?.addNotificationBlock { [weak self] change in
                 guard let this = self else { return }
 

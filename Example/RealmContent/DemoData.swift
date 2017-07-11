@@ -1,9 +1,8 @@
 //
 //  ViewController+DemoData.swift
-//  RealmContent
 //
-//  Created by Marin Todorov on 7/4/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Created by Marin Todorov
+//  Copyright © 2017 - present Realm. All rights reserved.
 //
 
 import Foundation

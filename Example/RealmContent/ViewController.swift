@@ -15,7 +15,6 @@ class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
 
-    // 2) create a content data source
     var items: ContentListDataSource!
 
     override func viewDidLoad() {
@@ -25,16 +24,24 @@ class ViewController: UIViewController {
         let realm = try! Realm()
         DemoData.createDemoDataSet1(in: realm)
 
-        if tableView.style == .plain {
+        // 2) create a content data source
+        switch navigationItem.title! {
+        case "Plain List":
             // one section, lists all pages by priority
             items = ContentListDataSource(style: .plain)
-        } else {
+            items.loadContent(from: realm)
+        case "List with Sections":
             // mulitple section, lists pages by priority within section
             items = ContentListDataSource(style: .sectionsByTag)
+            items.loadContent(from: realm)
+        case "Custom List Subset":
+            // filter the content with a custom predicate
+            items = ContentListDataSource(style: .plain)
+            items.loadContent(from: realm, filter: NSPredicate(format: "priority > %d", 5))
+        default: break
         }
 
         // 3) initialize the data source and set view to update
-        items.loadContent(from: realm)
         items.updating(view: tableView)
     }
 }

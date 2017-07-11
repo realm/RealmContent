@@ -1,9 +1,8 @@
 //
 //  DemosTableViewController.swift
-//  RealmContent
 //
-//  Created by Marin Todorov on 7/10/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Created by Marin Todorov
+//  Copyright © 2017 - present Realm. All rights reserved.
 //
 
 import UIKit
@@ -14,13 +13,14 @@ let defaultTextColor = TextContentCell.defaultTextColor
 
 class DemosTableViewController: UITableViewController {
 
-    func getPage(realm: Realm, prep: (Realm)->Void, id: String) -> ContentPage {
+    private func getPage(realm: Realm, prep: (Realm)->Void, id: String) -> ContentPage {
         prep(realm)
         return realm.objects(ContentPage.self)
             .filter("id = %@", id)
             .first!
     }
 
+    /// load demo content depending on the row tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier, let vc = segue.destination as? ContentViewController else { return }
 
@@ -65,6 +65,7 @@ class DemosTableViewController: UITableViewController {
         }
     }
 
+    /// method which customizes all content blocks in a custom page
     func customizeElementBlock(cell: UITableViewCell, indexPath: IndexPath, element: ContentElement) {
         var dashColor: UIColor
         if let _ = cell as? TextContentCell {
@@ -93,6 +94,7 @@ class DemosTableViewController: UITableViewController {
         dash.strokeColor = dashColor.cgColor
     }
 
+    /// handles custom URL schemes in content
     func handleCustomUrl(url: URL) {
 
         let alert = UIAlertController(title: "Added to cart", message: "The product id \(url.lastPathComponent) has been successfully added to your cart", preferredStyle: .alert)

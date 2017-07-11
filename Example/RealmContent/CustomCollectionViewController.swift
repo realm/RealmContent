@@ -23,6 +23,8 @@ class CustomCollectionViewController: UICollectionViewController {
         let realm = try! Realm()
         DemoData.createDemoDataSet1(in: realm)
 
+        // you can fetch the pages from 
+        // the realm yourself in any way you want
         items = realm.objects(ContentPage.self)
             .filter("priority > 0")
             .sorted(byKeyPath: "priority")
