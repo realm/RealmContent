@@ -13,7 +13,13 @@ public class ContentElement: Object {
     /// the supported element types
     public enum Kind: String {
         case p, img, h1, h2, h3, h4
+
+        static public func allRawValues() -> [String] {
+            return [p.rawValue, img.rawValue, h1.rawValue,
+                    h2.rawValue, h2.rawValue, h4.rawValue]
+        }
     }
+
 
     public dynamic var type = "p"
     public dynamic var content = ""

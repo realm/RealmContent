@@ -322,26 +322,26 @@
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="6" minY="6" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="4" minY="20" maxX="4" maxY="4"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCell" id="yRW-xH-LAr" customClass="ProductCellView" customModule="RealmContent_Example" customModuleProvider="target">
-                                        <rect key="frame" x="6" y="6" width="100" height="100"/>
+                                        <rect key="frame" x="4" y="20" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-La-HIH">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-La-HIH">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpc-DY-M8a">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpc-DY-M8a">
                                                             <rect key="frame" x="3" y="3" width="94" height="94"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uc8-4I-h0K">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uc8-4I-h0K">
                                                                     <rect key="frame" x="2" y="2" width="90" height="90"/>
                                                                 </imageView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-sE-aFC">
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-sE-aFC">
                                                                     <rect key="frame" x="3" y="67" width="88" height="24"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h94-xe-dio">
@@ -357,6 +357,13 @@
                                                                         <constraint firstAttribute="height" constant="24" id="Q0V-zc-x1f"/>
                                                                     </constraints>
                                                                 </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q9-5Z-QU9">
+                                                                    <rect key="frame" x="5" y="4" width="78" height="13"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="11"/>
+                                                                    <color key="textColor" red="1" green="0.29382037425283214" blue="0.22353632309155735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -390,16 +397,33 @@
                                         <connections>
                                             <outlet property="image" destination="Uc8-4I-h0K" id="rCB-Pv-zZF"/>
                                             <outlet property="label" destination="h94-xe-dio" id="gos-jW-JlR"/>
+                                            <outlet property="price" destination="5Q9-5Z-QU9" id="mOe-Fh-ONm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="uEg-e8-a6d" id="6lk-us-1CT"/>
+                                    <outlet property="delegate" destination="uEg-e8-a6d" id="M7a-2x-64R"/>
+                                </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRODUCT CATALOGUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWO-Ev-PfE">
+                                <rect key="frame" x="14" y="307.5" width="361" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="3Tx-6F-1q5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9da-T9-C8a" firstAttribute="top" secondItem="VrQ-x2-bfn" secondAttribute="bottom" id="IiV-6j-nwn"/>
                             <constraint firstItem="VrQ-x2-bfn" firstAttribute="top" secondItem="ER8-Bs-lB7" secondAttribute="bottom" id="Ilk-KM-4dd"/>
+                            <constraint firstAttribute="trailing" secondItem="WWO-Ev-PfE" secondAttribute="trailing" id="LIm-SM-hhE"/>
+                            <constraint firstItem="WWO-Ev-PfE" firstAttribute="top" secondItem="ER8-Bs-lB7" secondAttribute="bottom" constant="-26" id="TcS-mv-QEY"/>
                             <constraint firstAttribute="trailing" secondItem="ER8-Bs-lB7" secondAttribute="trailing" id="XQw-7E-ihG"/>
+                            <constraint firstItem="WWO-Ev-PfE" firstAttribute="leading" secondItem="hok-AL-22p" secondAttribute="leading" constant="14" id="bAf-Va-quU"/>
                             <constraint firstItem="VrQ-x2-bfn" firstAttribute="leading" secondItem="hok-AL-22p" secondAttribute="leading" id="cdt-m2-7Ms"/>
                             <constraint firstAttribute="trailing" secondItem="VrQ-x2-bfn" secondAttribute="trailing" id="kFE-DA-k40"/>
                             <constraint firstItem="ER8-Bs-lB7" firstAttribute="top" secondItem="hok-AL-22p" secondAttribute="top" id="pm8-NQ-Gx4"/>
@@ -408,6 +432,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Store App" id="9Le-xP-9Mp"/>
+                    <connections>
+                        <outlet property="collectionView" destination="VrQ-x2-bfn" id="1ld-k1-1jj"/>
+                        <outlet property="tableView" destination="ER8-Bs-lB7" id="rhr-3E-UBt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7i1-Fy-xRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

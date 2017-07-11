@@ -12,6 +12,9 @@ import RealmContent
 
 class StoreViewController: UIViewController {
 
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
+
     let offers = ContentListDataSource(style: .plain)
     let products = ContentListDataSource(style: .plain)
 
@@ -22,9 +25,10 @@ class StoreViewController: UIViewController {
         DemoData.createDemoDataSet3(in: realm)
 
         offers.loadContent(from: realm, filter: NSPredicate(format: "tag = %@", "offer"))
+        offers.updating(view: tableView)
+
         products.loadContent(from: realm, filter: NSPredicate(format: "tag = %@", "product"))
-
-
+        products.updating(view: collectionView)
     }
 
 }
@@ -67,6 +71,27 @@ extension StoreViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
+        let product = products.itemAt(indexPath: indexPath)
+        let productDetailsVC = ContentViewController(page: product)
+        productDetailsVC.openCustomURL = addToCart
+        productDetailsVC.customizeCell = styleElement
+
+        navigationController!.pushViewController(productDetailsVC, animated: true)
     }
 
+    func styleElement(cell: UITableViewCell, indexPath: IndexPath, element: ContentElement) {
+        if element.content == "Add to Cart" {
+            cell.contentView.backgroundColor = NSString(string: "#FCC397").representedColor()
+        } else {
+            cell.contentView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        }
+    }
+
+    func addToCart(url: URL) {
+        let alert = UIAlertController(title: "Added to cart", message: "\(url.lastPathComponent) add to your cart", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 }

@@ -17,36 +17,75 @@ struct DemoData {
             realm.deleteAll()
 
             // store offers
-            let offer1 = ContentPage(value: ["title": "This weekend everything is 20% off", "tag": "offer", "mainColor": "f25192"])
+            let offer1 = ContentPage(value: ["title": "This weekend everything is 20% off", "tag": "offer", "priority": 10, "mainColor": "#D34CA3"])
             let elements1: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Big weekend sale!"]),
                 ContentElement(value: ["type": "h2", "content": "This weekend everything is 20% off"]),
-                ContentElement(value: ["type": "p", "content": "Use promo code 'bigsummersale20' to get your discount at checkout"]),
-                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo-248797.jpg", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code 'bigsummersale20' to get your discount at checkout"])
             ]
             offer1.elements.append(objectsIn: elements1)
 
-            let offer2 = ContentPage(value: ["title": "Buy 4 garden gnomes, pay 5!", "tag": "offer", "mainColor": "f25192"])
+            let offer2 = ContentPage(value: ["title": "Buy 4 garden gnomes, pay 5!", "tag": "offer", "priority": 8, "mainColor": "#9A50A5"])
             let elements2: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Big spring sale!"]),
                 ContentElement(value: ["type": "h2", "content": "Buy 4 garden gnomes, pay 5!"]),
-                ContentElement(value: ["type": "p", "content": "Use promo code '4for5supergnome' to get your discount at checkout"]),
-                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo-296230.jpg", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '4for5supergnome' to get your discount at checkout"])
             ]
             offer2.elements.append(objectsIn: elements2)
 
-            let offer3 = ContentPage(value: ["title": "Get our fidelity card for a chance to win!", "tag": "offer", "mainColor": "f25192"])
+            let offer3 = ContentPage(value: ["title": "Get our fidelity card for a chance to win!", "tag": "offer", "priority": 6, "mainColor": "#59569E"])
             let elements3: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Get the card, win the prizes! Do it now!"]),
-                ContentElement(value: ["type": "p", "content": "Not only you will get permanent discount of 5% on all products, but you can also win big time!"]),
-                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+                ContentElement(value: ["type": "h3", "content": "Not only you will get permanent discount of 5% on all products, but you can also win big time!"]),
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo.jpg", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
             ]
             offer3.elements.append(objectsIn: elements3)
 
-
             realm.add([offer1, offer2, offer3])
 
+            let product1 = ContentPage(value: ["title": "Fujifilm Camera", "tag": "product"])
+            let productEls1: [ContentElement] = [
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo-90946.jpeg"]),
+                ContentElement(value: ["type": "price", "content": "USD 559.95"]),
+                ContentElement(value: ["type": "h2", "content": "Fujifilm Camera"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '1checkout' for your first purchase"]),
+                ContentElement(value: ["type": "h3", "content": "Add to Cart", "url": "app://addtocart/1435/"+"Fujifilm Camera".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!])
+            ]
+            product1.elements.append(objectsIn: productEls1)
 
+            let product2 = ContentPage(value: ["title": "Nikon Lens", "tag": "product"])
+            let productEls2: [ContentElement] = [
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo-279906.jpeg"]),
+                ContentElement(value: ["type": "price", "content": "USD 205.45"]),
+                ContentElement(value: ["type": "h2", "content": "Nikon Lens"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '1checkout' for your first purchase"]),
+                ContentElement(value: ["type": "h3", "content": "Add to Cart", "url": "app://addtocart/"+"Nikon Lens".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!])
+            ]
+            product2.elements.append(objectsIn: productEls2)
+
+            let product3 = ContentPage(value: ["title": "Nikon Zoom Lens", "tag": "product"])
+            let productEls3: [ContentElement] = [
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/light-night-lens-shadow.jpg"]),
+                ContentElement(value: ["type": "price", "content": "USD 428.95"]),
+                ContentElement(value: ["type": "h2", "content": "Nikon Zoom Lens"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '1checkout' for your first purchase"]),
+                ContentElement(value: ["type": "h3", "content": "Add to Cart", "url": "app://addtocart/"+"Nikon Zoom Lens".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!])
+            ]
+            product3.elements.append(objectsIn: productEls3)
+
+            let product4 = ContentPage(value: ["title": "Retro Smena Camera", "tag": "product"])
+            let productEls4: [ContentElement] = [
+                ContentElement(value: ["type": "img", "content": "https://raw.githubusercontent.com/realm-demos/RealmContent/master/assets/pexels-photo-50924.jpeg"]),
+                ContentElement(value: ["type": "price", "content": "USD 95.59"]),
+                ContentElement(value: ["type": "h2", "content": "Retro Smena Camera"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '1checkout' for your first purchase"]),
+                ContentElement(value: ["type": "h3", "content": "Add to Cart", "url": "app://addtocart/"+"Retro Smena Camera".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!])
+            ]
+            product4.elements.append(objectsIn: productEls4)
+
+            realm.add([product2, product3, product4, product1])
         }
     }
 
