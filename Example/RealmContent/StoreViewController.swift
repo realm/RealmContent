@@ -91,6 +91,7 @@ extension StoreViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let alert = UIAlertController(title: "Added to cart", message: "\(url.lastPathComponent) add to your cart", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
+            self?.navigationController!.popViewController(animated: true)
         }))
         present(alert, animated: true, completion: nil)
     }
