@@ -196,6 +196,7 @@ public class ContentListDataSource: NSObject {
         case .plain:
             return 1
         case .sectionsByTag:
+            precondition(sections != nil, "You need to set sectioned style and use loadContent(from:) before asking for data back")
             return sections!.count
         }
     }
@@ -206,10 +207,13 @@ public class ContentListDataSource: NSObject {
      - returns: the number of items in the section
      */
     public func numberOfItemsIn(section: Int) -> Int {
+        precondition(results != nil, "You need to use loadContent(from:) before asking for data back")
+
         switch style {
         case .plain:
             return results!.count
         case .sectionsByTag:
+            precondition(sections != nil, "You need to set sectioned style and use loadContent(from:) before asking for data back")
             return sections![section].count
         }
     }
@@ -224,6 +228,7 @@ public class ContentListDataSource: NSObject {
         case .plain:
             return nil
         case .sectionsByTag:
+            precondition(sections != nil, "You need to set sectioned style and use loadContent(from:) before asking for data back")
             return sections![section].title
         }
     }
@@ -235,10 +240,14 @@ public class ContentListDataSource: NSObject {
      - returns: a `ContentPage` found for the given section/index
      */
     public func itemAt(section: Int = -1, index: Int) -> ContentPage {
+        precondition(results != nil, "You need to use loadContent(from:) before asking for data back")
+
         switch style {
         case .plain:
             return results![index]
         case .sectionsByTag:
+            precondition(sections != nil, "You need to set sectioned style and use loadContent(from:) before asking for data back")
+
             let offset = sections![section].start
             return results![offset + index]
         }

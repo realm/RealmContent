@@ -36,7 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func showMainViewController(success: Bool = true) {
         let storyboard = self.window!.rootViewController!.storyboard!
-        self.window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Main")
+        let menu = storyboard.instantiateViewController(withIdentifier: "Main")
+        self.window!.rootViewController = menu
+
+        if !success {
+            let alert = UIAlertController(title: "Couldn't connect to \(host)", message: "Still fine though! The demo app will use temporarily a local Realm file.\n----------------\n For a syncing demo start your ROS, adjust connection details in AppDelegate.swift, and restart the app.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { _ in
+                menu.dismiss(animated: true, completion: nil)
+            }))
+            menu.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -52,7 +61,6 @@ extension AppDelegate {
                 DispatchQueue.main.async { completion(false) }
                 return
             }
-
             var conf = Realm.Configuration.defaultConfiguration
             conf.syncConfiguration = SyncConfiguration(user: user, realmURL: URL(string: "realm://\(host):9080/~/realmcontenttest1")!)
             Realm.Configuration.defaultConfiguration = conf

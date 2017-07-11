@@ -12,6 +12,44 @@ import RealmContent
 
 struct DemoData {
 
+    static func createDemoDataSet3(in realm: Realm) {
+        try! realm.write {
+            realm.deleteAll()
+
+            // store offers
+            let offer1 = ContentPage(value: ["title": "This weekend everything is 20% off", "tag": "offer", "mainColor": "f25192"])
+            let elements1: [ContentElement] = [
+                ContentElement(value: ["type": "h1", "content": "Big weekend sale!"]),
+                ContentElement(value: ["type": "h2", "content": "This weekend everything is 20% off"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code 'bigsummersale20' to get your discount at checkout"]),
+                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+            ]
+            offer1.elements.append(objectsIn: elements1)
+
+            let offer2 = ContentPage(value: ["title": "Buy 4 garden gnomes, pay 5!", "tag": "offer", "mainColor": "f25192"])
+            let elements2: [ContentElement] = [
+                ContentElement(value: ["type": "h1", "content": "Big spring sale!"]),
+                ContentElement(value: ["type": "h2", "content": "Buy 4 garden gnomes, pay 5!"]),
+                ContentElement(value: ["type": "p", "content": "Use promo code '4for5supergnome' to get your discount at checkout"]),
+                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+            ]
+            offer2.elements.append(objectsIn: elements2)
+
+            let offer3 = ContentPage(value: ["title": "Get our fidelity card for a chance to win!", "tag": "offer", "mainColor": "f25192"])
+            let elements3: [ContentElement] = [
+                ContentElement(value: ["type": "h1", "content": "Get the card, win the prizes! Do it now!"]),
+                ContentElement(value: ["type": "p", "content": "Not only you will get permanent discount of 5% on all products, but you can also win big time!"]),
+                ContentElement(value: ["type": "img", "content": "http://realm.io/assets/img/news/2016-05-17-realm-rxswift/rx.png", "url": "https://news.realm.io/news/marin-todorov-realm-rxswift/"])
+            ]
+            offer3.elements.append(objectsIn: elements3)
+
+
+            realm.add([offer1, offer2, offer3])
+
+
+        }
+    }
+
     static func createDemoDataSet2(in realm: Realm) {
         try! realm.write {
             realm.deleteAll()

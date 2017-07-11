@@ -14,6 +14,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		9C027FB91F14D30600D1E781 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C027FB81F14D30600D1E781 /* StoreViewController.swift */; };
+		9C027FBB1F14D40200D1E781 /* PageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C027FBA1F14D40200D1E781 /* PageCellView.swift */; };
+		9C027FBD1F14D4C600D1E781 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C027FBC1F14D4C600D1E781 /* ProductCellView.swift */; };
 		9CB782231F1394A000FE1828 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782221F1394A000FE1828 /* PageCollectionViewCell.swift */; };
 		9CB782251F13966900FE1828 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782241F13966900FE1828 /* CustomCollectionViewController.swift */; };
 		9CB782271F13C03C00FE1828 /* DemosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB782261F13C03C00FE1828 /* DemosTableViewController.swift */; };
@@ -51,6 +54,9 @@
 		79587B91D264E98BB4B38592 /* Pods-RealmContent_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmContent_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmContent_Tests/Pods-RealmContent_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		91887025475E5527D73EE4E9 /* Pods-RealmContent_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmContent_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmContent_Example/Pods-RealmContent_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9B388CBFD66930A128F34526 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		9C027FB81F14D30600D1E781 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		9C027FBA1F14D40200D1E781 /* PageCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCellView.swift; sourceTree = "<group>"; };
+		9C027FBC1F14D4C600D1E781 /* ProductCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		9CB782221F1394A000FE1828 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CB782241F13966900FE1828 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
 		9CB782261F13C03C00FE1828 /* DemosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemosTableViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 		607FACD21AFB9204008FA782 /* Example for RealmContent */ = {
 			isa = PBXGroup;
 			children = (
+				9C027FB71F14CFD600D1E781 /* App Demo */,
 				9CB782211F13948500FE1828 /* List Style Demos */,
 				9CB7EF7F1F0C1D5400E70F21 /* Assets */,
 				9CB7EF791F0C0F1700E70F21 /* Entities */,
@@ -170,6 +177,16 @@
 				79587B91D264E98BB4B38592 /* Pods-RealmContent_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C027FB71F14CFD600D1E781 /* App Demo */ = {
+			isa = PBXGroup;
+			children = (
+				9C027FB81F14D30600D1E781 /* StoreViewController.swift */,
+				9C027FBA1F14D40200D1E781 /* PageCellView.swift */,
+				9C027FBC1F14D4C600D1E781 /* ProductCellView.swift */,
+			);
+			name = "App Demo";
 			sourceTree = "<group>";
 		};
 		9CB782211F13948500FE1828 /* List Style Demos */ = {
@@ -408,8 +425,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C027FBB1F14D40200D1E781 /* PageCellView.swift in Sources */,
+				9C027FB91F14D30600D1E781 /* StoreViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				9CB7EF7E1F0C14A100E70F21 /* DemoData.swift in Sources */,
+				9C027FBD1F14D4C600D1E781 /* ProductCellView.swift in Sources */,
 				9CB782231F1394A000FE1828 /* PageCollectionViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				9CB782271F13C03C00FE1828 /* DemosTableViewController.swift in Sources */,

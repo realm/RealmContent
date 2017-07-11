@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 import SafariServices
 import RealmSwift
-import NSString_Color
 import Kingfisher
 
 /**
