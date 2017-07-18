@@ -28,12 +28,12 @@ Realm powered content management system providing built-in view controllers and 
   s.default_subspec = 'Core'
   
   s.subspec 'Core' do |cs|
-    cs.source_files = 'RealmContent/Classes/Classes/*', 'RealmContent/Classes/Entities/*', 'RealmContent/Classes/View/*'  
+    cs.source_files = 'RealmContent/Entities/*', 'RealmContent/Core/Classes/*', 'RealmContent/Core/View/*'  
   end
   
   s.subspec 'Markdown' do |cs|
     cs.dependency 'MMMarkdown'
   
-    cs.source_files = 'RealmContent/Classes/View/Markdown/*'
+    cs.source_files = 'RealmContent/Entities/*', 'RealmContent/Markdown/Classes/*', 'RealmContent/Markdown/View/*'
   end
 end

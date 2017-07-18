@@ -14,6 +14,9 @@ class StoreViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var cartItem: UIBarButtonItem!
+    
+    var cart = [String: Int]()
 
     let offers = ContentListDataSource(style: .plain)
     let products = ContentListDataSource(style: .plain)
@@ -30,7 +33,6 @@ class StoreViewController: UIViewController {
         products.loadContent(from: realm, filter: NSPredicate(format: "tag = %@", "product"))
         products.updating(view: collectionView)
     }
-
 }
 
 extension StoreViewController: UITableViewDataSource, UITableViewDelegate {
@@ -88,10 +90,25 @@ extension StoreViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func addToCart(url: URL) {
-        let alert = UIAlertController(title: "Added to cart", message: "\(url.lastPathComponent) add to your cart", preferredStyle: .alert)
+        let product = url.lastPathComponent
+        cart[product] = (cart[product] ?? 0) + 1
+        cartItem.title = "Cart (\(cart.values.reduce(0, +)))"
+
+        let alert = UIAlertController(title: "Added to cart", message: "\(product) added to your cart", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
             self?.navigationController!.popViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension StoreViewController /* Cart */ {
+    @IBAction func showCart(_ sender: Any) {
+        let contents = cart.map { key, value in "\(value) x \(key)" }.joined(separator: "\n")
+        let alert = UIAlertController(title: "Your Cart", message: contents, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
     }

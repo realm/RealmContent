@@ -26,7 +26,6 @@ class ProductCellView: UICollectionViewCell {
             imageElement.type == ContentElement.Kind.img.rawValue {
 
             image.kf.setImage(with: URL(string: imageElement.content))
-            
         }
 
         // checks if second element is a price (custom type)
@@ -36,6 +35,5 @@ class ProductCellView: UICollectionViewCell {
         } else {
             price.text = nil
         }
-
     }
 }

@@ -24,16 +24,6 @@ class PageCellView: UITableViewCell {
 
     @IBOutlet var label: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
-
     func populate(with page: ContentPage, atRow row: Int) {
         label.text = page.title
         label.textColor = OrbColor.at(index: row)

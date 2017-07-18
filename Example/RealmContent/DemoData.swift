@@ -12,6 +12,26 @@ import RealmContent
 
 struct DemoData {
 
+    static func createDemoDataSet4(in realm: Realm) {
+        try! realm.write {
+            realm.deleteAll()
+
+            // store offers
+            let format1 = ContentPage(value: ["title": "Formatting showcase", "id": "formatting", "priority": 10, "mainColor": "#D34CA3"])
+            let elements1: [ContentElement] = [
+                ContentElement(value: ["type": "h1", "content": "Plain text"]),
+                ContentElement(value: ["type": "p", "content": "Some plain text here\n\n-------------------"]),
+                ContentElement(value: ["type": "h1", "content": "Markdown"]),
+                ContentElement(value: ["type": "p", "content": "Heading\n====\nSub-Heading\n----\nHere is some _markdown_ *formatted* text.\n\n>This is a *markdown* _formatted_ blockquote.\n[Link back to app](app://123/MyProduct)\n\n-------------------"]),
+                ContentElement(value: ["type": "h1", "content": "HTML"]),
+                ContentElement(value: ["type": "p", "content": "<h1>H1 Heading</h1><h3>H3 Heading</h3>More <i>HT</i><b>ML</b> follows here. <table border=1 padding=10><tr><td>Price:</td><td>218.30</td></tr><tr><td>Product:</td><td>Product name</td></tr></table><a href='app://123/myproduct' style='display:block; padding:20px; background: #569e6b; border:1px solid #40664a; width:110px; height:18px;color:white; font-weight:bold;text-decoration:none;font-size:18px;margin-top:20px;-webkit-border-radius:10px;'>Add to Cart</a>"])
+            ]
+            format1.elements.append(objectsIn: elements1)
+
+            realm.add(format1)
+        }
+    }
+
     static func createDemoDataSet3(in realm: Realm) {
         try! realm.write {
             realm.deleteAll()
