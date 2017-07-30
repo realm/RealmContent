@@ -196,3 +196,5 @@ The names and logos for Realm are trademarks of Realm Inc.
 We :heart: open source software!
 
 See [our other open source projects](https://github.com/realm), read [our blog](https://realm.io/news), or say hi on twitter ([@realm](https://twitter.com/realm)).
+
+![analytics](https://ga-beacon.appspot.com/UA-50247013-2/RealmContent/README?pixel)
