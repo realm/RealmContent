@@ -43,18 +43,15 @@ public class ImageContentCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        let marginGuide = contentView.layoutMarginsGuide
-
+        img.translatesAutoresizingMaskIntoConstraints = true
         img.contentMode = .scaleAspectFit
+        img.frame = contentView.bounds.insetBy(dx: layoutMargins.left, dy: layoutMargins.top)
+        img.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        // configure titleLabel
         contentView.addSubview(img)
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        img.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
-        img.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        img.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
-        heightConstraint = img.heightAnchor.constraint(equalToConstant: 20)
+
+        heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 20)
+        heightConstraint.priority = 500
         heightConstraint.isActive = true
     }
 
