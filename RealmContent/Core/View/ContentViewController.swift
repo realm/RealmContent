@@ -110,9 +110,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
 
-        pageElementsUpdatesToken = page.elements
-            .filter(NSPredicate(format: "type in %@", ContentElement.Kind.allRawValues()))
-            .addNotificationBlock(applyChanges)
+        pageElementsUpdatesToken = page.elements.addNotificationBlock(applyChanges)
     }
 
     private func populateFrom(page: ContentPage) {
@@ -126,7 +124,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
-    private func applyChanges(_ changes: RealmCollectionChange<Results<ContentElement>>) {
+    private func applyChanges(_ changes: RealmCollectionChange<List<ContentElement>>) {
         let section = 0
 
         switch changes {
