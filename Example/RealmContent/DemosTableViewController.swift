@@ -22,46 +22,62 @@ class DemosTableViewController: UITableViewController {
 
     /// load demo content depending on the row tapped
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier, let vc = segue.destination as? ContentViewController else { return }
+        guard let identifier = segue.identifier  else { return }
 
         TextContentCell.defaultTextColor = defaultTextColor
-
-        // fetch page
         let realm = try! Realm()
 
-        // inject it in view controller
-        switch identifier {
-        case "DefaultPage":
-            // vanilla formatting
-            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
-            try! realm.write {
-                page.mainColor = nil
+        /// show content via MarkdownViewController
+        if let vc = segue.destination as? MarkdownViewController {
+            switch identifier {
+            case "MarkdownAndHTML":
+                // show markdown and html content
+                let page = getPage(realm: realm, prep: DemoData.createDemoDataSet4, id: "formatting")
+                vc.page = page
+                vc.openCustomURL = handleCustomUrl
+
+            default: break
             }
+        }
 
-            vc.page = page
+        /// show content via ContentViewController
+        if let vc = segue.destination as? ContentViewController {
 
-        case "CustomColor":
-            // custom color
-            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
-            try! realm.write {
-                page.mainColor = "#cc3355"
+            // inject it in view controller
+            switch identifier {
+            case "DefaultPage":
+                // vanilla formatting
+                let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
+                try! realm.write {
+                    page.mainColor = nil
+                }
+
+                vc.page = page
+
+            case "CustomColor":
+                // custom color
+                let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
+                try! realm.write {
+                    page.mainColor = "#cc3355"
+                }
+                TextContentCell.defaultTextColor = .brown
+
+                vc.page = page
+
+            case "CustomElements":
+                // customized elements
+                let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
+                vc.page = page
+                vc.customizeCell = customizeElementBlock
+
+            case "Interactions":
+                // shows different interactions
+                let page = getPage(realm: realm, prep: DemoData.createDemoDataSet2, id: "interactions")
+                vc.page = page
+                vc.openCustomURL = handleCustomUrl
+
+            default: break
             }
-            TextContentCell.defaultTextColor = .brown
-
-            vc.page = page
-
-        case "CustomElements":
-            // customized elements
-            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet1, id: "showcase")
-            vc.page = page
-            vc.customizeCell = customizeElementBlock
-
-        case "Interactions":
-            // shows different interactions
-            let page = getPage(realm: realm, prep: DemoData.createDemoDataSet2, id: "interactions")
-            vc.page = page
-            vc.openCustomURL = handleCustomUrl
-        default: break
         }
     }
 

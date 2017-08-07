@@ -22,6 +22,13 @@ public class MarkdownViewController: UIViewController {
     }
 
     private var content: Content!
+    public var page: ContentPage! {
+        didSet {
+            content = .page(self.page)
+        }
+    }
+
+    public var openCustomURL: ((URL)->Void)?
 
     // the controller's view
     private let webView = MarkdownView()
@@ -58,17 +65,13 @@ public class MarkdownViewController: UIViewController {
     public var usesSafariController = true
     public var customCssStyle: String? = nil
 
-    public init(content: Content) {
-        self.content = content
-
+    public init(page: ContentPage) {
+        self.content = .page(page)
         super.init(nibName: nil, bundle: nil)
-        self.view = webView
-        //webView.navigationDelegate = self
-        webView.delegate = self
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     private func populateFrom(markdown md: String) {
@@ -108,6 +111,9 @@ public class MarkdownViewController: UIViewController {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        view = webView
+        webView.delegate = self
+
         switch content! {
         case .page(let page):
             observe(page: page)
@@ -122,7 +128,9 @@ extension MarkdownViewController: UIWebViewDelegate {
     public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == .linkClicked, let url = request.url {
             // website
-            if usesSafariController, let scheme = url.scheme, scheme.hasPrefix("http") {
+            if let scheme = url.scheme, scheme == "app" {
+                openCustomURL?(url)
+            } else if usesSafariController, let scheme = url.scheme, scheme.hasPrefix("http") {
                 let safari = SFSafariViewController(url: url)
                 present(safari, animated: true, completion: nil)
             } else {

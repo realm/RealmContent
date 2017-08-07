@@ -162,7 +162,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
             tableView.insertRows(at: insertions.map(fromRow(section)), with: .automatic)
             tableView.reloadRows(at: modifications.map(fromRow(section)), with: .none)
 
-            moves.forEach { print("move from \($0.from.value) to \($0.to.value)") }
+            //moves.forEach { print("move from \($0.from.value) to \($0.to.value)") }
 
             moves.forEach {
                 tableView.moveRow(

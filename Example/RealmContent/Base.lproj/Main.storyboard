@@ -256,6 +256,35 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Advanced Formats" id="ck6-nb-PQe">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wjV-ZG-VhT">
+                                        <rect key="frame" x="0.0" y="619.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wjV-ZG-VhT" id="G3R-TY-dqe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Markdown &amp; HTML" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHR-BR-kbI">
+                                                    <rect key="frame" x="16" y="11" width="344" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GHR-BR-kbI" secondAttribute="trailing" constant="7" id="IQR-vd-dgL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GHR-BR-kbI" secondAttribute="bottom" constant="3.5" id="aDa-Z4-Jnp"/>
+                                                <constraint firstItem="GHR-BR-kbI" firstAttribute="leading" secondItem="G3R-TY-dqe" secondAttribute="leadingMargin" constant="8" id="gGe-Bn-57R"/>
+                                                <constraint firstItem="GHR-BR-kbI" firstAttribute="top" secondItem="G3R-TY-dqe" secondAttribute="topMargin" constant="3" id="u8t-dv-SQC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sJa-C9-kzu" kind="show" identifier="MarkdownAndHTML" id="NG2-1U-Ggd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="nFA-EA-AG8" id="HT5-l6-f2H"/>
@@ -431,8 +460,15 @@
                             <constraint firstItem="ER8-Bs-lB7" firstAttribute="height" secondItem="hok-AL-22p" secondAttribute="height" multiplier="0.5" id="xwn-Ww-B8C"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Store App" id="9Le-xP-9Mp"/>
+                    <navigationItem key="navigationItem" title="Store App" id="9Le-xP-9Mp">
+                        <barButtonItem key="rightBarButtonItem" title="Cart" id="Rw8-5w-N6f">
+                            <connections>
+                                <action selector="showCart:" destination="uEg-e8-a6d" id="bbw-Fc-Li3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cartItem" destination="Rw8-5w-N6f" id="RNY-uz-CvP"/>
                         <outlet property="collectionView" destination="VrQ-x2-bfn" id="1ld-k1-1jj"/>
                         <outlet property="tableView" destination="ER8-Bs-lB7" id="rhr-3E-UBt"/>
                     </connections>
@@ -758,6 +794,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lns-3z-B2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="769" y="170"/>
+        </scene>
+        <!--Markdown View Controller-->
+        <scene sceneID="mqy-Iu-FAG">
+            <objects>
+                <viewController storyboardIdentifier="MarkdownViewController" id="sJa-C9-kzu" customClass="MarkdownViewController" customModule="RealmContent" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NC6-VJ-CUO"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Qe-Vh-S3g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dsn-xe-JgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xjC-NC-TPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="173"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

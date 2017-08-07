@@ -30,14 +30,17 @@ class ViewController: UIViewController {
             // one section, lists all pages by priority
             items = ContentListDataSource(style: .plain)
             items.loadContent(from: realm)
+
         case "List with Sections":
             // mulitple section, lists pages by priority within section
             items = ContentListDataSource(style: .sectionsByTag)
             items.loadContent(from: realm)
+
         case "Custom List Subset":
             // filter the content with a custom predicate
             items = ContentListDataSource(style: .plain)
             items.loadContent(from: realm, filter: NSPredicate(format: "priority > %d", 5))
+            
         default: break
         }
 
