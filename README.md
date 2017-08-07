@@ -171,12 +171,35 @@ An element of type `img` fetches an image from the web and caches it locally. Th
 
 If you set the value of the `url` column to a valid url address, the text or image will become tappable elements and open the target url either in a safari view controller or directly in Safari (check the docs for details).
 
+### Markdown
+
+The library includes class for rendering Markdown content. If you're using CocoaPods make sure to include the sub-spec called `RealmContent.Markdown`.
+
+`MarkdownViewController` is an alternative to `ContentViewController`; instead of using a native table view to render all elements interactively it simply uses a full-screen web view and renders all elements as markdown and/or HTML.
+
+This approach enables you to push HTML from the server inside any `ContentElement` and render anything you want. You gain that at the cost of some of the performance gains for larger documents and change animations  that you get with the native table view controller.
+
+You can either use `MarkdownViewController` as the class of a controller in your storyboard or you can create an instance manually and present it on screen:
+
+```swift
+let vc = MarkdownViewController(page: myContentPageObject)
+vc.openCustomURL = { customUrl in ... }
+vc.usesSafariController = true
+vc.customCssStyle = "h1 {color: purple;}"
+present(vc, animated: true)
+```
+
 ## Installation
 
 RealmContent is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
+# to include the core library
 pod "RealmContent"
+
+# or to include markdown and core
+pod "RealmContent.Core"
+pod "RealmContent.Markdown"
 ```
 
 Alternatively, include the source code files directly into your own project.
