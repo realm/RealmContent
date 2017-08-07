@@ -171,6 +171,20 @@ An element of type `img` fetches an image from the web and caches it locally. Th
 
 If you set the value of the `url` column to a valid url address, the text or image will become tappable elements and open the target url either in a safari view controller or directly in Safari (check the docs for details).
 
+If a link starts with the `app://` scheme it will, upon a tap, call your custom URL handling closure so you have the chance to react to link taps in your app's code. Here's a quick example:
+
+```swift
+// example link: "app://cart/product/id/123"
+
+let vc = ContentViewController(page: myContentPageObject)
+vc.openCustomURL = { url in 
+  if url.host == "cart" {
+    myCart.addProductWithId(url.lastPathComponent)
+  }
+}
+present(vc, animated: true)
+```
+
 ### Markdown
 
 The library includes class for rendering Markdown content. If you're using CocoaPods make sure to include the sub-spec called `RealmContent.Markdown`.
