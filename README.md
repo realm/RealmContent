@@ -16,7 +16,7 @@ This library is powered by __RealmSwift__ ( [Realm Docs](https://realm.io/docs/s
 
 ## Quick Showcase (~3 min)
 
-[![Video Thumbnail](assets/video-thumb.jpg)](https://news.realm.io/news/marin-todorov-realmcontent-open-source-realm-powered-cms-component)
+[![Video Thumbnail](assets/video-thumb.jpg)](https://news.realm.io/news/marin-todorov-realmcontent-open-source-cms)
 
 _Links to video and blog article about RealmContent._
 
@@ -196,3 +196,5 @@ The names and logos for Realm are trademarks of Realm Inc.
 We :heart: open source software!
 
 See [our other open source projects](https://github.com/realm), read [our blog](https://realm.io/news), or say hi on twitter ([@realm](https://twitter.com/realm)).
+
+![analytics](https://ga-beacon.appspot.com/UA-50247013-2/RealmContent/README?pixel)
