@@ -180,6 +180,17 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
         return page.elements.count
     }
 
+    internal var refreshId: UInt64 = 0
+    internal func throttledLayoutUpdate() {
+        refreshId+=1
+        let currentId = refreshId
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let this = self, currentId == this.refreshId else { return }
+            this.tableView.beginUpdates()
+            this.tableView.endUpdates()
+        }
+    }
+
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let element = page.elements[indexPath.row]
 
@@ -199,8 +210,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
             let cellId = String(describing: ImageContentCell.self)
             let cell: ImageContentCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ImageContentCell
             cell.populate(with: element) { [weak self] in
-                self?.tableView.beginUpdates()
-                self?.tableView.endUpdates()
+                self?.throttledLayoutUpdate()
             }
             cell.delegate = self
             return cell
