@@ -180,14 +180,16 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
         return page.elements.count
     }
 
-    internal var refreshId: UInt64 = 0
+    internal var relayout: DispatchWorkItem?
     internal func throttledLayoutUpdate() {
-        refreshId+=1
-        let currentId = refreshId
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let this = self, currentId == this.refreshId else { return }
+        relayout?.cancel()
+        relayout = DispatchWorkItem(qos: .userInteractive, flags: [], block: { [weak self] in
+            guard let this = self else { return }
             this.tableView.beginUpdates()
             this.tableView.endUpdates()
+        })
+        if let relayout = relayout {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: relayout)
         }
     }
 

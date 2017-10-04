@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RealmContent'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = 'Realm powered content management system'
 
   s.description      = <<-DESC
@@ -21,8 +21,8 @@ Realm powered content management system providing built-in view controllers and 
   
   s.frameworks = 'UIKit'
   
-  s.dependency 'RealmSwift'
-  s.dependency 'Kingfisher'
+  s.dependency 'RealmSwift', '~> 2'
+  s.dependency 'Kingfisher', '~> 3'
   s.dependency 'NSString+Color'
   
   s.default_subspec = 'Core'
