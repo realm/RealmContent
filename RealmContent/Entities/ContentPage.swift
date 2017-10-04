@@ -16,10 +16,13 @@ public class ContentPage: Object {
     public dynamic var mainColor: String?
     public dynamic var lang: String?
     public dynamic var tag = ""
-    public dynamic var id = ""
+    public dynamic var uuid = UUID().uuidString
 
     override public static func indexedProperties() -> [String] {
-        return ["priority", "tag", "id"]
+        return ["priority", "tag"]
     }
-    
+
+    override public class func primaryKey() -> String {
+        return "uuid"
+    }
 }
