@@ -132,7 +132,7 @@ public class TextContentCell: UITableViewCell {
 
     // MARK: - private methods
     
-    internal func didTap() {
+    @objc internal func didTap() {
         guard let url = url else { return }
         label.alpha = 0.5
         UIView.animate(withDuration: 0.33, animations: {

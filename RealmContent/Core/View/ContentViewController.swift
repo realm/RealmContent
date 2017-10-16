@@ -88,14 +88,14 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     private func observe(page: ContentPage) {
-        pageUpdatesToken?.stop()
-        pageElementsUpdatesToken?.stop()
+        pageUpdatesToken?.invalidate()
+        pageElementsUpdatesToken?.invalidate()
 
         // load the page content
         populateFrom(page: page)
 
         // enable updates
-        pageUpdatesToken = page.addNotificationBlock() { [weak self] change in
+        pageUpdatesToken = page.observe() { [weak self] change in
             switch change {
             case .change(let properties):
                 for p in properties {
@@ -112,7 +112,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
 
         pageElementsUpdatesToken = page.elements
             .filter(NSPredicate(format: "type in %@", ContentElement.Kind.allRawValues()))
-            .addNotificationBlock(applyChanges)
+            .observe(applyChanges)
     }
 
     private func populateFrom(page: ContentPage) {

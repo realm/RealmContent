@@ -10,13 +10,13 @@ import RealmSwift
 /// represents a single content page - news article, blog post, announcement, etc.
 public class ContentPage: Object {
 
-    public dynamic var title: String?
+    @objc public dynamic var title: String?
     public let elements = List<ContentElement>()
-    public dynamic var priority = 0
-    public dynamic var mainColor: String?
-    public dynamic var lang: String?
-    public dynamic var tag = ""
-    public dynamic var uuid = UUID().uuidString
+    @objc public dynamic var priority = 0
+    @objc public dynamic var mainColor: String?
+    @objc public dynamic var lang: String?
+    @objc public dynamic var tag = ""
+    @objc public dynamic var uuid = UUID().uuidString
 
     override public static func indexedProperties() -> [String] {
         return ["priority", "tag"]

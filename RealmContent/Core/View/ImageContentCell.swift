@@ -51,7 +51,7 @@ public class ImageContentCell: UITableViewCell {
         contentView.addSubview(img)
 
         heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 20)
-        heightConstraint.priority = 500
+        heightConstraint.priority = UILayoutPriority.defaultLow
         heightConstraint.isActive = true
     }
 
@@ -124,7 +124,7 @@ public class ImageContentCell: UITableViewCell {
         return image
     }
 
-    internal func didTap() {
+    @objc internal func didTap() {
         guard let url = url else { return }
         img.alpha = 0.67
         UIView.animate(withDuration: 0.33, animations: {

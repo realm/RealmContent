@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RealmContent'
-  s.version          = '0.2.3'
+  s.version          = '0.2.4'
   s.summary          = 'Realm powered content management system'
 
   s.description      = <<-DESC
@@ -21,8 +21,8 @@ Realm powered content management system providing built-in view controllers and 
   
   s.frameworks = 'UIKit'
   
-  s.dependency 'RealmSwift', '~> 2'
-  s.dependency 'Kingfisher', '~> 3'
+  s.dependency 'RealmSwift', '= 3.0.0-rc.1'
+  s.dependency 'Kingfisher', '~> 4'
   s.dependency 'NSString+Color'
   
   s.default_subspec = 'Core'
@@ -36,4 +36,6 @@ Realm powered content management system providing built-in view controllers and 
   
     cs.source_files = 'RealmContent/Entities/*', 'RealmContent/Markdown/Classes/*', 'RealmContent/Markdown/View/*'
   end
+  
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 end
