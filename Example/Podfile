@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'RealmContent_Example' do
-  pod 'RealmSwift', '= 3.0.0-rc.1'
+  pod 'RealmSwift', '~> 3'
 
   pod 'RealmContent', :path => '../'
   pod 'RealmContent/Markdown', :path => '../'

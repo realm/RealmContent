@@ -21,7 +21,7 @@ Realm powered content management system providing built-in view controllers and 
   
   s.frameworks = 'UIKit'
   
-  s.dependency 'RealmSwift', '= 3.0.0-rc.1'
+  s.dependency 'RealmSwift', '~> 3'
   s.dependency 'Kingfisher', '~> 4'
   s.dependency 'NSString+Color'
   
