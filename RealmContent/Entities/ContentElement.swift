@@ -21,10 +21,9 @@ public class ContentElement: Object {
     }
 
 
-    public dynamic var type = "p"
-    public dynamic var content = ""
-    public dynamic var url: String?
-    
+    @objc public dynamic var type = "p"
+    @objc public dynamic var content = ""
+    @objc public dynamic var url: String?
 }
 
 extension ContentElement {

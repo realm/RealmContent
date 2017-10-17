@@ -102,7 +102,7 @@ public class ContentListDataSource: NSObject {
             // sort the pages by priority
             results = results!.sorted(byKeyPath: keyPriority, ascending: false)
 
-            resultsToken = results?.addNotificationBlock { [weak self] change in
+            resultsToken = results?.observe { [weak self] change in
                 guard let view = self?.view else { return }
                 if let tableView = view as? UITableView { tableView.reloadData() }
                 if let collectionView = view as? UICollectionView { collectionView.reloadData() }
@@ -124,7 +124,7 @@ public class ContentListDataSource: NSObject {
                     SortDescriptor(keyPath: keyPriority, ascending: false)
                     ])
 
-            resultsToken = results?.addNotificationBlock { [weak self] change in
+            resultsToken = results?.observe { [weak self] change in
                 guard let this = self else { return }
 
                 switch change {

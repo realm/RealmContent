@@ -1,12 +1,25 @@
 use_frameworks!
 
 target 'RealmContent_Example' do
-  pod 'RealmSwift'
+  pod 'RealmSwift', '~> 3'
 
   pod 'RealmContent', :path => '../'
   pod 'RealmContent/Markdown', :path => '../'
 
   target 'RealmContent_Tests' do
     inherit! :search_paths
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      next unless target.name.include?("RealmSwift") ||
+      target.name.include?("Kingfisher") ||
+      target.name.include?("MMMarkdown") ||
+      target.name.include?("RealmContent")
+
+      config.build_settings['SWIFT_VERSION'] = '4.0'
+    end
   end
 end

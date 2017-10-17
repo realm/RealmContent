@@ -39,14 +39,14 @@ public class MarkdownViewController: UIViewController {
 
     // dynamically update the content
     private func observe(page: ContentPage) {
-        pageUpdatesToken?.stop()
-        pageElementsUpdatesToken?.stop()
+        pageUpdatesToken?.invalidate()
+        pageElementsUpdatesToken?.invalidate()
 
         // load the page content
         populateFrom(page: page)
 
         // enable updates
-        pageUpdatesToken = page.addNotificationBlock { [weak self] change in
+        pageUpdatesToken = page.observe { [weak self] change in
             switch change {
             case .change: self?.populateFrom(page: page)
             case .deleted: self?.pageUpdatesToken = nil
@@ -54,7 +54,7 @@ public class MarkdownViewController: UIViewController {
             }
         }
 
-        pageElementsUpdatesToken = page.elements.addNotificationBlock { [weak self] change in
+        pageElementsUpdatesToken = page.elements.observe { [weak self] change in
             switch change {
             case .update: self?.populateFrom(page: page)
             default: break
