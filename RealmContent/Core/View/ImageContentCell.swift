@@ -51,7 +51,7 @@ public class ImageContentCell: UITableViewCell {
         contentView.addSubview(img)
 
         heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 20)
-        heightConstraint.priority = UILayoutPriority.defaultLow
+        heightConstraint.priority = UILayoutPriority(rawValue: 500)
         heightConstraint.isActive = true
     }
 
