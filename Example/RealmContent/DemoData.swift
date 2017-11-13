@@ -17,7 +17,7 @@ struct DemoData {
             realm.deleteAll()
 
             // store offers
-            let format1 = ContentPage(value: ["title": "Formatting showcase", "id": "formatting", "priority": 10, "mainColor": "#D34CA3"])
+            let format1 = ContentPage(value: ["title": "Formatting showcase", "uuid": "formatting", "priority": 10, "mainColor": "#D34CA3"])
             let elements1: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Plain text"]),
                 ContentElement(value: ["type": "p", "content": "Some plain text here\n\n-------------------"]),
@@ -116,7 +116,7 @@ struct DemoData {
             let contact = ContentPage(value: [
                 "title": "Interactions Showcase",
                 "mainColor": "Blue",
-                "id": "interactions"
+                "uuid": "interactions"
                 ])
             let elements: [ContentElement] = [
                 ContentElement(value: ["type": "p", "content": "This is a text"]),
@@ -153,7 +153,7 @@ struct DemoData {
                 "priority": 8,
                 "mainColor": "purple",
                 "tag": "Info",
-                "id": "showcase"
+                "uuid": "showcase"
                 ])
             let elements: [ContentElement] = [
                 ContentElement(value: ["type": "h1", "content": "Heading with h1"]),

@@ -16,7 +16,7 @@ class DemosTableViewController: UITableViewController {
     private func getPage(realm: Realm, prep: (Realm)->Void, id: String) -> ContentPage {
         prep(realm)
         return realm.objects(ContentPage.self)
-            .filter("id = %@", id)
+            .filter("uuid = %@", id)
             .first!
     }
 
