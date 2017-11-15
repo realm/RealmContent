@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RealmContent'
-  s.version          = '0.2.5'
+  s.version          = '0.2.6'
   s.summary          = 'Realm powered content management system'
 
   s.description      = <<-DESC
