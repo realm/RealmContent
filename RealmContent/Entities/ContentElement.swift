@@ -16,7 +16,7 @@ public class ContentElement: Object {
 
         static public func allRawValues() -> [String] {
             return [p.rawValue, img.rawValue, h1.rawValue,
-                    h2.rawValue, h2.rawValue, h4.rawValue]
+                    h2.rawValue, h2.rawValue, h3.rawValue, h4.rawValue]
         }
     }
 
