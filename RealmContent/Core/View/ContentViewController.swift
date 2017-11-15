@@ -24,6 +24,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - private properties
     private let tableView = UITableView()
     public var page: ContentPage!
+    private var elements: Results<ContentElement>!
     private var lastHashes = [Int]()
 
     /// realm notifications
@@ -95,7 +96,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
         populateFrom(page: page)
 
         // enable updates
-        pageUpdatesToken = page.observe() { [weak self] change in
+        pageUpdatesToken = page.observe { [weak self] change in
             switch change {
             case .change(let properties):
                 for p in properties {
@@ -110,9 +111,8 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
 
-        pageElementsUpdatesToken = page.elements
-            .filter(NSPredicate(format: "type in %@", ContentElement.Kind.allRawValues()))
-            .observe(applyChanges)
+        elements = page.elements.filter(NSPredicate(format: "type in %@", ContentElement.Kind.allRawValues()))
+        pageElementsUpdatesToken = elements.observe(applyChanges)
     }
 
     private func populateFrom(page: ContentPage) {
@@ -179,7 +179,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return page.elements.count
+        return elements.count
     }
 
     internal var relayout: DispatchWorkItem?
@@ -196,7 +196,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let element = page.elements[indexPath.row]
+        let element = elements[indexPath.row]
 
         guard let kind = ContentElement.Kind(rawValue: element.type) else {
             return UITableViewCell()
@@ -222,7 +222,7 @@ public class ContentViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        customizeCell?(cell, indexPath, page.elements[indexPath.row])
+        customizeCell?(cell, indexPath, elements[indexPath.row])
     }
 }
 
